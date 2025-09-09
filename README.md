@@ -2,8 +2,8 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Phu Nguyen`
+- **CCID:** `pn2`
 
 ## References and Resources
 
