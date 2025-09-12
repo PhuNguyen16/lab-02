@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
 
-    int selectedIndex = -1; // -1 means nothing selected yet
+    int selectedIndex = -1; // No selection yet.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,27 +37,24 @@ public class MainActivity extends AppCompatActivity {
         btnAddCity = findViewById(R.id.btn_add_city);
         btnDeleteCity = findViewById(R.id.btn_delete_city);
 
-        // starter data
         String[] cities = {"Edmonton", "Vancouver", "Moscow", "Sydney", "Berlin",
                 "Vienna", "Tokyo", "Beijing", "Osaka", "New Delhi"};
         dataList = new ArrayList<>(Arrays.asList(cities));
 
-        // use a built-in layout that supports "activated" state highlighting
         cityAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_activated_1, dataList);
         cityList.setAdapter(cityAdapter);
 
-        // select on tap
         cityList.setOnItemClickListener((parent, view, position, id) -> {
             selectedIndex = position;
             cityList.setItemChecked(position, true);
             btnDeleteCity.setEnabled(true);
         });
 
-        // add flow: press ADD CITY -> type -> CONFIRM
+        // Add
         btnAddCity.setOnClickListener(v -> showAddCityDialog());
 
-        // delete flow: must have a selection
+        // Delete 
         btnDeleteCity.setOnClickListener(v -> {
             if (selectedIndex < 0 || selectedIndex >= dataList.size()) {
                 Toast.makeText(this, "Pick a city first", Toast.LENGTH_SHORT).show();
